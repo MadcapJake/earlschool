@@ -1,0 +1,2 @@
+pets = {"cat", "dog", "rat"}
+print pets each pet -> '{pet}s'

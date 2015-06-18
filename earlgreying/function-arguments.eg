@@ -1,0 +1,4 @@
+math = (x, y, z) ->
+   (y * z) + x
+
+print math(53, 61, 67)

@@ -1,0 +1,13 @@
+let {a, b, c} = {1, 2, 3}
+
+first() where first = ->
+   let {b, c} = {5, 6}
+
+   second() where second = ->
+      let b = 8
+      print 'a: {a}, b: {b},c: {c}'
+      third() where third = ->
+         let {a, c} = {7, 9}
+
+         fourth where fourth = ->
+            let {a, c} = {1, 8}

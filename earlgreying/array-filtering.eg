@@ -1,0 +1,3 @@
+numbers = 1..10
+evens = numbers each n when n mod 2 == 0 -> n
+print evens

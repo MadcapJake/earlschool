@@ -1,0 +1,4 @@
+eat = String? food ->
+   '{food} tasted really good.'
+
+print eat("bananas")

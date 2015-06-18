@@ -1,0 +1,2 @@
+let example = "example string"
+print example.length

@@ -1,0 +1,5 @@
+var total = 0
+let limit = 10
+0..[limit - 1] each i ->
+   total += i
+print total
