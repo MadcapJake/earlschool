@@ -1,0 +1,9 @@
+require: fs
+read-file = promisify(fs.readFile)
+async:
+   lines = await read-file(process.argv[2])
+   print chain lines:
+      @toString()
+      @split("\n")
+      @length - 1
+;; Fails `verify` due to EG but is a proper solution

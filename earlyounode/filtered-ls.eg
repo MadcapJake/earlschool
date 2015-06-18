@@ -1,0 +1,13 @@
+require: fs, path
+read-dir = promisify(fs.readdir)
+
+dir-path = process.argv[2]
+filetype = '.{process.argv[3]}'
+
+async:
+   all-files = await read-dir(dir-path)
+   text-files =
+      all-files each file when path.extname(file) == filetype -> file
+   text-files each file -> print file
+
+;; Once again failed due to test for `fs.readdir`

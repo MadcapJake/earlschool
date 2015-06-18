@@ -1,0 +1,6 @@
+require: http
+
+http.get(process.argv[2]) with chain response ->
+   @setEncoding with .utf8
+   @on 'data' : chunk -> print chunk
+   @on 'error': error -> print error

@@ -1,0 +1,33 @@
+require: http
+
+var ret = {{=}, {=}, {=}}
+var printed = false
+
+collect = urls ->
+   0..2 each i ->
+      ret[i].url   = urls[i]
+      ret[i].acc   = ""
+      ret[i].done  = false
+      getUrls(ret[i])
+
+getUrls = struct ->
+   http.get(struct.url) with chain response ->
+      @setEncoding with .utf8
+      @on 'data' : chunk ->
+         struct.acc += chunk
+      @on 'error': error -> print error
+      @on 'end'  : ->
+         struct.done = true
+         if check-done() and not printed:
+            ret each struct ->
+               print struct.acc
+            printed = true
+
+check-done = ->
+   ret each struct ->
+      match struct.done:
+         == true -> continue
+         == false -> return false
+   return true
+
+collect(process.argv[2..4])

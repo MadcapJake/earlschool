@@ -1,0 +1,3 @@
+var sum = 0
+process.argv[2..] each Number! n -> sum += n
+print sum

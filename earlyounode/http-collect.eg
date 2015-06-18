@@ -1,0 +1,14 @@
+require: http
+
+var chars = 0
+var acc = ""
+
+http.get(process.argv[2]) with chain response ->
+   @setEncoding with .utf8
+   @on 'data' : chunk ->
+      chars += chunk.length
+      acc += chunk
+   @on 'error': error -> print error
+   @on 'end'  : ->
+      print chars
+      print acc
